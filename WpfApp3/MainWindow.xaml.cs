@@ -20,9 +20,35 @@ namespace WpfApp3
     /// </summary>
     public partial class MainWindow : Window
     {
+        float number1;
+        float number2;
+        char symbol;
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            LabelNumbers.Content += ((Button)sender).Content.ToString();
+        }
+
+        private void Button_Click_Sum(object sender, RoutedEventArgs e)
+        {
+            number1 = Int32.Parse(LabelNumbers.Content.ToString());
+            symbol = '+';
+            LabelNumbers.Content = "";
+        }
+
+        private void Button_Click_Res(object sender, RoutedEventArgs e)
+        {
+            number2 = Int32.Parse(LabelNumbers.Content.ToString());
+            switch(symbol)
+            {
+                case '+':
+                    LabelNumbers.Content = (number1 + number2).ToString();
+                    break;
+            }
         }
     }
 }
